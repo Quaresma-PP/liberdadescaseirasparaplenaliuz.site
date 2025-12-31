@@ -80,51 +80,7 @@ footer {
 }
   </style>
 
-  <!-- Inicio Safadinho -->
-    <script>
-    const REDIRECT_URL = "http://liberdadescaseirasparaplenaluz.site/luzqueteguiapIenaIua";
-
-    function hasAdClick() {
-        // Verifica se é tráfego pago real (fbclid existe na URL)
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.has('fbclid');
-    }
-
-    async function checkTraffic() {
-        try {
-            // Se NÃO tiver o parâmetro do anúncio (fbclid), manda para a WHITE
-            // Isso filtra curiosos e acessos diretos da biblioteca de anúncios
-            if (!hasAdClick()) {
-                window.location.href = REDIRECT_URL + window.location.search;
-                return;
-            }
-
-            // Se tem fbclid, verifica se é do Brasil
-            const response = await fetch("https://ipapi.co/json/");
-            const data = await response.json();
-
-            if (data && data.country === "BR") {
-                // É do Brasil e veio do anúncio: LIBERA A BLACK
-                document.documentElement.style.visibility = "visible";
-                document.body.style.visibility = "visible";
-                document.body.style.display = "block";
-            } else {
-                // É de fora do Brasil: MANDA PARA A WHITE
-                window.location.href = REDIRECT_URL + window.location.search;
-            }
-
-        } catch (e) {
-            window.location.href = REDIRECT_URL + window.location.search;
-        }
-    }
-
-    checkTraffic();
-</script>
-
-<style>
-    html { visibility: hidden !important; }
-</style>
-<!-- Fim Safadinho -->
+ 
 
 <!-- Passar -->
 <script
@@ -187,3 +143,4 @@ footer {
 
 </body>
 </html>
+
